@@ -1,0 +1,4 @@
+name: SlashHub
+version: '${project.version}'
+main: com.woolmc.slashhub.SlashHub
+description: Sends you back to hub
