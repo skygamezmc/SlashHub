@@ -14,7 +14,7 @@ public class ReloadCommand extends Command {
     public Configuration config;
 
     public ReloadCommand(String HubReload) {
-        super(HubReload);
+        super(HubReload, "slashhub.reload");
         config = SlashHub.config;
     }
 
