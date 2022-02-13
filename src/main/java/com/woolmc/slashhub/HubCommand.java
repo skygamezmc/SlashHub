@@ -11,7 +11,7 @@ public class HubCommand extends Command {
     public Configuration config;
 
     public HubCommand(String hub ) {
-        super(hub);
+        super(hub, "slashhub.use");
         config = SlashHub.config;
     }
 
