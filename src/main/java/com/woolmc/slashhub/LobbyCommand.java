@@ -11,7 +11,7 @@ public class LobbyCommand extends Command {
     public Configuration config;
 
     public LobbyCommand(String lobby) {
-        super(lobby);
+        super(lobby, "slashhub.use");
         config = SlashHub.config;
     }
 
