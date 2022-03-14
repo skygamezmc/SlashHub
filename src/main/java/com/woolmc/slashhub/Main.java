@@ -29,6 +29,7 @@ public final class Main extends Plugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        plugin = this;
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand("hub"));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new LobbyCommand("lobby"));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand("hubreload"));
