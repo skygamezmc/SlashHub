@@ -8,17 +8,22 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.config.Configuration;
 
+import java.util.List;
+import java.util.Random;
+
 public class HubCommand extends Command {
     public Configuration config;
+    public Main main;
 
-    public HubCommand(String hub) {
-        super(hub, "slashhub.use");
-        config = Main.config;
+    public HubCommand(Main main, Configuration config) {
+        super("hub", "slashhub.use");
+        this.config = config;
+        this.main = main;
     }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        config = Main.config;
+        config = main.config;
         if (!(sender instanceof ProxiedPlayer)) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("Messages.CannotExecuteOnConsoleMessage")));
             return;
@@ -31,19 +36,22 @@ public class HubCommand extends Command {
         ProxiedPlayer p = (ProxiedPlayer)sender;
         ProxiedPlayer target = ProxyServer.getInstance().getPlayer(sender.getName());
 
-        if(!ProxyServer.getInstance().getConfig().getServers().containsKey(config.getString("TargetServer"))) {
+        Random rand = new Random();
+        List<String> TargetServers = config.getStringList("TargetServers");
+        String RandomServer = TargetServers.get(rand.nextInt(TargetServers.size()));
+
+        if(!ProxyServer.getInstance().getConfig().getServers().containsKey(RandomServer)) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("Messages.ServerNotFound")));
             ProxyServer.getInstance().getLogger().warning("[SlashHub] Player " + sender.getName() + " has attempted to connect to server " + config.getString("TargetServer") + " However this server was not found in your Bungeecord Config");
             return;
         }
 
-        if (target.getServer().getInfo().getName().equals(config.getString("TargetServer"))) {
+        if (config.getStringList("TargetServers").contains(target.getServer().getInfo().getName())) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("Messages.AlreadyOnHubMessage")));
             return;
         }
 
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("Messages.ConnectingMessage")));
-        p.connect(ProxyServer.getInstance().getServerInfo(config.getString("TargetServer")));
+        p.connect(ProxyServer.getInstance().getServerInfo(RandomServer));
     }
 }
-
