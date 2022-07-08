@@ -1,17 +1,19 @@
 #################################
-#    SlashHub Version 1.4.3     #
+#    SlashHub Version 1.6       #
 #################################
-
-
-# Target server selection
-# Note that the server you put in MUST be a server that is listed in your bungeecord config
-# If your lobby's bungee name is NOT "lobby" then this must be changed.
 
 #Permissions
 #/Hub permission: slashhub.use
 #/HubReload permission: slashhub.reload
 
-TargetServer: "lobby"
+
+# Target server selection
+# Note that the server(s) you put in MUST be a server that is listed in your bungeecord config
+# If your lobby's bungee name is NOT "lobby1" or "lobby2" then this must be changed.
+# If you only have one lobby then remove all strings except 1
+TargetServers:
+  - "lobby1"
+  - "lobby2"
 
 # Message customization
 # From here you can customize all messages that the plugin sends
