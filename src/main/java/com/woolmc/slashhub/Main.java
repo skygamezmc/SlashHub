@@ -18,8 +18,7 @@ import java.nio.file.Files;
 
 public final class Main extends Plugin {
 
-    public static Configuration config;
-    public static Main plugin;
+    public Configuration config;
 
     @Override
     public void onEnable() {
@@ -29,10 +28,9 @@ public final class Main extends Plugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        plugin = this;
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand("hub"));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new LobbyCommand("lobby"));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand("hubreload"));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new LobbyCommand(this, config));
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand(this, config));
         getLogger().info(getDescription().getVersion());
         try {
             UpdateChecker updateChecker = new UpdateChecker(this);
@@ -72,7 +70,3 @@ public final class Main extends Plugin {
         // Plugin shutdown logic
     }
 }
-
-// hehehe code yoinking be like
-
-// feel free to yoink this code btw
