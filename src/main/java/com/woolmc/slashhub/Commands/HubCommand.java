@@ -8,6 +8,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.config.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,10 +16,12 @@ public class HubCommand extends Command {
     public Configuration config;
     public Main main;
 
-    public HubCommand(Main main, Configuration config) {
-        super("hub", "slashhub.use");
+    public HubCommand(Main main, Configuration config, String[] Aliases) {
+
+        super("hub", "slashhub.use", Aliases);
         this.config = config;
         this.main = main;
+        System.out.println(config.getStringList("CommandAliases"));
     }
 
     @Override
