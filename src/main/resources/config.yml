@@ -1,5 +1,5 @@
 #################################
-#    SlashHub Version 1.6       #
+#    SlashHub Version 1.6.2     #
 #################################
 
 #Permissions
@@ -9,11 +9,17 @@
 
 # Target server selection
 # Note that the server(s) you put in MUST be a server that is listed in your bungeecord config
-# If your lobby's bungee name is NOT "lobby1" or "lobby2" then this must be changed.
-# If you only have one lobby then remove all strings except 1
+
+# Set your lobbys according to the lobbies bungeecord names
+# You can set more than 2 lobbies!
 TargetServers:
   - "lobby1"
   - "lobby2"
+
+# This sets the command aliases for the Hub command
+# A RESTART IS REQUIRED TO COMMIT CHANGES TO THIS!
+CommandAliases:
+  - "lobby"
 
 # Message customization
 # From here you can customize all messages that the plugin sends
