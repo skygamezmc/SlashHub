@@ -1,7 +1,6 @@
 package com.woolmc.slashhub;
 
 import com.woolmc.slashhub.Commands.HubCommand;
-import com.woolmc.slashhub.Commands.LobbyCommand;
 import com.woolmc.slashhub.Commands.ReloadCommand;
 import com.woolmc.slashhub.Updater.UpdateChecker;
 import net.md_5.bungee.api.ChatColor;
@@ -13,8 +12,8 @@ import net.md_5.bungee.config.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
 public final class Main extends Plugin {
 
@@ -28,8 +27,11 @@ public final class Main extends Plugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config));
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new LobbyCommand(this, config));
+
+        String[] HubAliases = new String[config.getStringList("CommandAliases").size()];
+        config.getStringList("CommandAliases").toArray(HubAliases);
+
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, HubAliases));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand(this, config));
         getLogger().info(getDescription().getVersion());
         try {
@@ -45,7 +47,7 @@ public final class Main extends Plugin {
                 getLogger().info("§b----------------------------");
                 getLogger().info("");
                 getLogger().info("§7  * §9SlashHub by SkyGameZ §7*");
-                getLogger().info("§7    * §9Version 1.5 §7*");
+                getLogger().info("§7    * §9Version 1.6.1 §7*");
                 getLogger().info("");
                 getLogger().info("§b----------------------------");
             }
