@@ -1,4 +1,4 @@
-package com.woolmc.slashhub;
+ppackage com.woolmc.slashhub;
 
 import com.woolmc.slashhub.Commands.HubCommand;
 import com.woolmc.slashhub.Commands.ReloadCommand;
@@ -22,10 +22,23 @@ public final class Main extends Plugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+
         try {
             loadConfiguration();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        if (config.getFloat("Config-Version") != 1.0) {
+            getLogger().info("§4------------------------------------");
+            getLogger().info("");
+            getLogger().info("§7          * §eWARNING!§7*");
+            getLogger().info("§7     * §cConfig out of date!§7*");
+            getLogger().info("§7  * §cPlease get new config version!§7 *");
+            getLogger().info("");
+            getLogger().info("§4------------------------------------");
+
+            return;
         }
 
         String[] HubAliases = new String[config.getStringList("CommandAliases").size()];
@@ -47,7 +60,7 @@ public final class Main extends Plugin {
                 getLogger().info("§b----------------------------");
                 getLogger().info("");
                 getLogger().info("§7  * §9SlashHub by SkyGameZ §7*");
-                getLogger().info("§7    * §9Version 1.6.1 §7*");
+                getLogger().info("§7    * §9Version " + getDescription().getVersion() + " §7*");
                 getLogger().info("");
                 getLogger().info("§b----------------------------");
             }
