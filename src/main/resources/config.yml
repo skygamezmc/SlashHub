@@ -1,5 +1,5 @@
 #################################
-#    SlashHub Version 1.6.2     #
+#    SlashHub Version 1.6.3     #
 #################################
 
 #Permissions
@@ -30,3 +30,7 @@ Messages:
   ServerNotFound: "&cIt appears that the server you are trying to connect to does not exist. Please contact an Administrator."
   NoPermission: "&cYou do not have permission to run this command!"
   ReloadedPlugin: "&aSuccessfully reloaded SlashHub!"
+
+
+#Do not touch this
+Config-Version: 1.0
