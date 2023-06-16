@@ -1,0 +1,5 @@
+com\woolmc\slashhub\Commands\ReloadCommand.class
+com\woolmc\slashhub\Commands\HubCommand.class
+com\woolmc\slashhub\Main.class
+com\woolmc\slashhub\Functions\MessageFormatter.class
+com\woolmc\slashhub\Updater\UpdateChecker.class
