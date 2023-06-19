@@ -56,6 +56,9 @@ public final class Main extends Plugin {
             return;
         }
 
+        int pluginId = 18799;
+        Metrics metrics = new Metrics(this, pluginId);
+
         String[] HubAliases = new String[config.getStringList("CommandAliases").size()];
         config.getStringList("CommandAliases").toArray(HubAliases);
 
@@ -64,7 +67,6 @@ public final class Main extends Plugin {
 
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, adventure, HubAliases));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand(this, adventure, config));
-        getLogger().info(getDescription().getVersion());
         try {
             UpdateChecker updateChecker = new UpdateChecker(this);
             if (updateChecker.updateRequired()) {
