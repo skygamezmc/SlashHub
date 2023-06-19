@@ -12,6 +12,8 @@ import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
+import com.woolmc.slashhub.Metrics.Metrics;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
