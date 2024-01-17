@@ -1,4 +1,6 @@
-E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\HubCommand.java
-E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\SlashHub.java
-E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\LobbyCommand.java
-E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\ReloadCommand.java
+E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\Metrics\Metrics.java
+E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\Updater\UpdateChecker.java
+E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\Commands\ReloadCommand.java
+E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\Functions\MessageFormatter.java
+E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\Commands\HubCommand.java
+E:\ideaprojects\SlashHub\src\main\java\com\woolmc\slashhub\Main.java

@@ -2,3 +2,4 @@ name: SlashHub
 version: '${project.version}'
 main: com.woolmc.slashhub.Main
 description: Sends you back to hub
+author: SkyGameZ
