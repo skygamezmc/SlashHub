@@ -22,7 +22,6 @@ import java.util.ArrayList;
 public final class Main extends Plugin {
 
     public Configuration config;
-    public int version;
 
     private BungeeAudiences adventure;
 
@@ -49,9 +48,8 @@ public final class Main extends Plugin {
         if (config.getFloat("Config-Version") != 1.0) {
             getLogger().info("§4------------------------------------");
             getLogger().info("");
-            getLogger().info("§7          * §eWARNING!§7*");
             getLogger().info("§7     * §cConfig out of date!§7*");
-            getLogger().info("§7  * §cPlease get new config version!§7 *");
+            getLogger().info("§7  * §cPlease regenerate your config!§7 *");
             getLogger().info("");
             getLogger().info("§4------------------------------------");
 
@@ -64,9 +62,6 @@ public final class Main extends Plugin {
 
         String[] HubAliases = new String[config.getStringList("CommandAliases").size()];
         config.getStringList("CommandAliases").toArray(HubAliases);
-
-        String[] split = getProxy().getVersion().split(":")[2].split("-")[0].split("\\.");
-        version = Integer.parseInt(split[1]);
 
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, adventure, HubAliases));
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand(this, adventure, config));

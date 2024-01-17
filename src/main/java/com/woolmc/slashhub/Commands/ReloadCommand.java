@@ -19,7 +19,6 @@ import java.util.regex.Pattern;
 public class ReloadCommand extends Command {
     public Configuration config;
     public Main main;
-    public int version;
 
     private BungeeAudiences adventure;
 
@@ -32,7 +31,6 @@ public class ReloadCommand extends Command {
         super("hubreload", "slashhub.reload");
         this.config = config;
         this.main = main;
-        this.version = main.version;
         adventure = bungeeAudiences;
     }
 

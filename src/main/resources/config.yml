@@ -31,7 +31,9 @@ CommandAliases:
   - "lobby"
 
 # Message customization
-# MiniMessage is supported. See the MiniMessage Format Wiki for more info: https://docs.advntr.dev/minimessage/format.html
+# MiniMessage is supported for 1.16+. See the MiniMessage Format Wiki for more info: https://docs.advntr.dev/minimessage/format.html
+# --IMPORTANT-- HEXCODES DO NOT WORK ON VERSIONS UNDER 1.16!
+
 Messages:
   ConnectingMessage: "<green>Sending you to the Lobby.."
   AlreadyOnHubMessage: "<red>You are already connected to the hub!"

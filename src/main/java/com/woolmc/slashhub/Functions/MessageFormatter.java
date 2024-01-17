@@ -57,14 +57,12 @@ public class MessageFormatter {
         return mm.deserialize(text);
     }
 
-    public String LegacyColorFormatter(int version, String string) {
-        if (version >= 16) {
-            Matcher match = hexColorPattern.matcher(string);
-            while (match.find()) {
-                String color = string.substring(match.start(), match.end());
-                string = string.replace(color, ChatColor.of(color) + "");
-                match = hexColorPattern.matcher(string);
-            }
+    public String LegacyColorFormatter(String string) {
+        Matcher match = hexColorPattern.matcher(string);
+        while (match.find()) {
+            String color = string.substring(match.start(), match.end());
+            string = string.replace(color, ChatColor.of(color) + "");
+            match = hexColorPattern.matcher(string);
         }
         return ChatColor.translateAlternateColorCodes('&', string);
     }

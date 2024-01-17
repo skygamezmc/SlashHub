@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 public class HubCommand extends Command {
     public Configuration config;
     public Main main;
-    public int version;
 
     private BungeeAudiences adventure;
 
@@ -37,7 +36,6 @@ public class HubCommand extends Command {
         super("hub", "slashhub.use", Aliases);
         this.config = config;
         this.main = main;
-        this.version = main.version;
         adventure = bungeeAudiences;
     }
 
@@ -48,7 +46,7 @@ public class HubCommand extends Command {
 
         if (!(sender instanceof ProxiedPlayer)) {
             if (!config.getString("Messages.CannotExecuteOnConsoleMessage").isEmpty()) {
-                sender.sendMessage(messageFormatter.LegacyColorFormatter(version, config.getString("Messages.CannotExecuteOnConsoleMessage")));
+                sender.sendMessage(messageFormatter.LegacyColorFormatter(config.getString("Messages.CannotExecuteOnConsoleMessage")));
             }
             return;
         }
@@ -67,15 +65,10 @@ public class HubCommand extends Command {
         List<String> TargetServers = config.getStringList("TargetServers");
         String RandomServer = TargetServers.get(rand.nextInt(TargetServers.size()));
 
-        System.out.println(config.getStringList("DisabledServers"));
-        System.out.println(target.getServer().getInfo().getName());
-        System.out.println(sender.hasPermission("slashhub.bypass"));
         if (config.getStringList("DisabledServers").contains(target.getServer().getInfo().getName()) && !sender.hasPermission("slashhub.bypass")) {
             player.sendMessage(messageFormatter.Format(adventure, mm, config.getString("Messages.ServerDisabled")));
-            System.out.println(true);
             return;
         }
-        System.out.println(false);
 
         if(!ProxyServer.getInstance().getConfig().getServers().containsKey(RandomServer)) {
             if (!config.getString("Messages.ServerNotFound").isEmpty()) {
