@@ -1,8 +1,8 @@
 #################################
-#      SlashHub Version 1.9     #
+#     SlashHub Version 1.9.2    #
 #################################
 
-# PLEASE PRIVATE MESSAGE SKYGAMEZ OR LEAVE A POST IN THE DISCUSSION TAB BEFORE RATING ONE STAR!
+# PLEASE JOIN OUR SUPPORT DISCORD, OR LEAVE A POST IN THE DISCUSSION TAB BEFORE RATING ONE STAR!
 # YOUR ISSUE MIGHT BE AN EASY FIX!!
 
 # Permissions
@@ -12,9 +12,9 @@
 
 
 # Target server selection
-# Note that the server(s) you put in MUST be a server that is defined in the servers part of your bungeecord config
+# Note that the server(s) you put in MUST be a server that is defined in the servers part of your BungeeCord config
 
-# Set your lobbys according to the lobbies defined servername in your bungeecord config
+# Set your lobby's according to the lobbies defined server name in your BungeeCord config
 # You can set more than 2 lobbies!
 TargetServers:
   - "lobby1"
@@ -31,7 +31,7 @@ CommandAliases:
   - "lobby"
 
 # Message customization
-# MiniMessage is supported for 1.16+. See the MiniMessage Format Wiki for more info: https://docs.advntr.dev/minimessage/format.html
+# MiniMessage is supported. See the MiniMessage Format Wiki for more info: https://docs.advntr.dev/minimessage/format.html
 # --IMPORTANT-- HEXCODES DO NOT WORK ON VERSIONS UNDER 1.16!
 
 Messages:
