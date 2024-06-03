@@ -44,15 +44,14 @@ public final class Main extends Plugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if (config.getFloat("Config-Version") != 1.0) {
+        getLogger().info(String.valueOf(config.getFloat("Config-Version")));
+        if (config.getFloat("Config-Version") != 1.1f) {
             getLogger().info("§4------------------------------------");
             getLogger().info("");
             getLogger().info("§7     * §cConfig out of date!§7*");
             getLogger().info("§7  * §cPlease regenerate your config!§7 *");
             getLogger().info("");
             getLogger().info("§4------------------------------------");
-
             return;
         }
 
@@ -63,7 +62,11 @@ public final class Main extends Plugin {
         String[] HubAliases = new String[config.getStringList("CommandAliases").size()];
         config.getStringList("CommandAliases").toArray(HubAliases);
 
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, adventure, HubAliases));
+        if (config.getBoolean("RequireUsePermission")) {
+            ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, adventure, HubAliases, true));
+        } else{
+            ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, adventure, HubAliases));
+        }
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand(this, adventure, config));
         try {
             UpdateChecker updateChecker = new UpdateChecker(this, 99803);
@@ -94,7 +97,7 @@ public final class Main extends Plugin {
             getDataFolder().mkdir();
             Files.copy(this.getResourceAsStream("config.yml"),
                     configFile.toPath());
-            getLogger().info(ChatColor.translateAlternateColorCodes('&', "&aConfig Created"));
+            getLogger().info("§aGenerated SlashHub Config v1.1");
         }
         config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
     }

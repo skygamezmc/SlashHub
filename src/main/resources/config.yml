@@ -1,12 +1,12 @@
 #################################
-#     SlashHub Version 1.9.2    #
+#    SlashHub Version 1.10.1    #
 #################################
 
-# PLEASE JOIN OUR SUPPORT DISCORD, OR LEAVE A POST IN THE DISCUSSION TAB BEFORE RATING ONE STAR!
-# YOUR ISSUE MIGHT BE AN EASY FIX!!
+# Need assistance? Have a request? Found a bug?
+# Join our support Discord for help!
 
 # Permissions
-#   slashhub.use - Allows usage of /hub and its according aliases
+#   slashhub.use - Allows usage of /hub and its according aliases - can be disabled
 #   slashhub.reload - Allows usage of /hubreload
 #   slashhub.bypass - Allows bypassing of /hub being disabled on select servers.
 
@@ -43,6 +43,10 @@ Messages:
   ReloadedPlugin: "<green>Successfully reloaded SlashHub!"
   ServerDisabled: "<red>This command is disabled on this server!"
 
+# Set this to false if you would like /hub to not be permission bound
+# A RESTART IS REQUIRED TO COMMIT CHANGES TO THIS!
+RequireUsePermission: true
+
 
 #Do not touch this
-Config-Version: 1.0
+Config-Version: 1.1
