@@ -1,23 +1,19 @@
 package com.woolmc.slashhub.Commands;
 
-import com.woolmc.slashhub.Functions.MessageFormatter;
+import com.woolmc.slashhub.utils.MessageFormatter;
 import com.woolmc.slashhub.Main;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.platform.bungeecord.BungeeAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.config.Configuration;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class HubCommand extends Command {
     public Configuration config;

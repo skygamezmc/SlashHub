@@ -2,7 +2,9 @@ package com.woolmc.slashhub;
 
 import com.woolmc.slashhub.Commands.HubCommand;
 import com.woolmc.slashhub.Commands.ReloadCommand;
+import com.woolmc.slashhub.Commands.SlashHubCommand;
 import com.woolmc.slashhub.Updater.UpdateChecker;
+import com.woolmc.slashhub.utils.ConfigUtils;
 import net.kyori.adventure.platform.bungeecord.BungeeAudiences;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 public final class Main extends Plugin {
 
     public Configuration config;
+    public ConfigUtils configUtils;
 
     private BungeeAudiences adventure;
 
@@ -39,12 +42,13 @@ public final class Main extends Plugin {
 
         this.adventure = BungeeAudiences.create(this);
 
+        configUtils = new ConfigUtils(this);
         try {
-            loadConfiguration();
+            configUtils.loadConfiguration();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        getLogger().info(String.valueOf(config.getFloat("Config-Version")));
+
         if (config.getFloat("Config-Version") != 1.1f) {
             getLogger().info("§4------------------------------------");
             getLogger().info("");
@@ -54,7 +58,6 @@ public final class Main extends Plugin {
             getLogger().info("§4------------------------------------");
             return;
         }
-
         int pluginId = 18799;
         Metrics metrics = new Metrics(this, pluginId);
 
@@ -68,6 +71,8 @@ public final class Main extends Plugin {
             ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, adventure, HubAliases));
         }
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand(this, adventure, config));
+
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new SlashHubCommand(this, adventure, config));
         try {
             UpdateChecker updateChecker = new UpdateChecker(this, 99803);
             if (updateChecker.isUpdateRequired()) {
@@ -89,17 +94,6 @@ public final class Main extends Plugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void loadConfiguration() throws IOException {
-        File configFile = new File(getDataFolder(), "config.yml");
-        if (!configFile.exists()) {
-            getDataFolder().mkdir();
-            Files.copy(this.getResourceAsStream("config.yml"),
-                    configFile.toPath());
-            getLogger().info("§aGenerated SlashHub Config v1.1");
-        }
-        config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
     }
 
     @Override

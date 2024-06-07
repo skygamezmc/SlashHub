@@ -1,5 +1,5 @@
 #################################
-#    SlashHub Version 1.10.1    #
+#     SlashHub Version 1.11     #
 #################################
 
 # Need assistance? Have a request? Found a bug?
@@ -7,7 +7,8 @@
 
 # Permissions
 #   slashhub.use - Allows usage of /hub and its according aliases - can be disabled
-#   slashhub.reload - Allows usage of /hubreload
+#   slashhub.admin.reload - Allows usage of /slashhub reload
+#   slashhub.admin.* - Grants access to every admin command
 #   slashhub.bypass - Allows bypassing of /hub being disabled on select servers.
 
 
@@ -15,10 +16,9 @@
 # Note that the server(s) you put in MUST be a server that is defined in the servers part of your BungeeCord config
 
 # Set your lobby's according to the lobbies defined server name in your BungeeCord config
-# You can set more than 2 lobbies!
+# You can set more than 1 lobby!
 TargetServers:
-  - "lobby1"
-  - "lobby2"
+  - "lobby"
 
 # Set servers you want to block access to /hub
 # You can set more than 1 server!

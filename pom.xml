@@ -6,7 +6,7 @@
 
     <groupId>com.woolmc</groupId>
     <artifactId>SlashHub</artifactId>
-    <version>1.10.1</version>
+    <version>1.11</version>
     <packaging>jar</packaging>
 
     <name>SlashHub</name>
