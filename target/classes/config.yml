@@ -7,7 +7,7 @@
 
 # Permissions
 #   slashhub.use - Allows usage of /hub and its according aliases - can be disabled
-#   slashhub.admin.reload - Allows usage of /hubreload
+#   slashhub.admin.reload - Allows usage of /slashhub reload
 #   slashhub.admin.* - Grants access to every admin command
 #   slashhub.bypass - Allows bypassing of /hub being disabled on select servers.
 

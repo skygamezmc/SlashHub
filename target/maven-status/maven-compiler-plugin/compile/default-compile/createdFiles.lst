@@ -1,6 +1,5 @@
 com\woolmc\slashhub\Metrics\Metrics$AdvancedBarChart.class
 com\woolmc\slashhub\Metrics\Metrics$SimpleBarChart.class
-com\woolmc\slashhub\Commands\ReloadCommand.class
 com\woolmc\slashhub\Commands\HubCommand.class
 com\woolmc\slashhub\utils\ConfigUtils.class
 com\woolmc\slashhub\Main.class

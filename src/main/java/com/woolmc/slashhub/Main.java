@@ -1,7 +1,6 @@
 package com.woolmc.slashhub;
 
 import com.woolmc.slashhub.Commands.HubCommand;
-import com.woolmc.slashhub.Commands.ReloadCommand;
 import com.woolmc.slashhub.Commands.SlashHubCommand;
 import com.woolmc.slashhub.Updater.UpdateChecker;
 import com.woolmc.slashhub.utils.ConfigUtils;
@@ -70,7 +69,6 @@ public final class Main extends Plugin {
         } else{
             ProxyServer.getInstance().getPluginManager().registerCommand(this, new HubCommand(this, config, adventure, HubAliases));
         }
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new ReloadCommand(this, adventure, config));
 
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new SlashHubCommand(this, adventure, config));
         try {

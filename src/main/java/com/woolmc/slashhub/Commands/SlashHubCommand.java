@@ -10,13 +10,17 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
+import net.md_5.bungee.api.plugin.TabExecutor;
 import net.md_5.bungee.config.Configuration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class SlashHubCommand extends Command {
+public class SlashHubCommand extends Command implements TabExecutor {
     public Configuration config;
     public Main main;
 
@@ -34,6 +38,8 @@ public class SlashHubCommand extends Command {
         adventure = bungeeAudiences;
     }
 
+
+
     @Override
     public void execute(CommandSender sender, String[] args) {
         Audience player = adventure.sender(sender);
@@ -42,7 +48,7 @@ public class SlashHubCommand extends Command {
         List<String> targetServers = config.getStringList("TargetServers");
 
         if (args.length == 0) {
-            if ((!sender.hasPermission("slashhub.admin.reload") || sender.hasPermission("slashhub.reload") || !sender.hasPermission("slashhub.admin.*")) && sender instanceof ProxiedPlayer) {
+            if ((!sender.hasPermission("slashhub.admin.reload") || !sender.hasPermission("slashhub.reload") || !sender.hasPermission("slashhub.admin.*")) && sender instanceof ProxiedPlayer) {
                 player.sendMessage(messageFormatter.Format(adventure, mm, config.getString("Messages.NoPermission")));
                 return;
             }
@@ -59,7 +65,7 @@ public class SlashHubCommand extends Command {
 
         switch (args[0]) {
             case "reload":
-                if ((!sender.hasPermission("slashhub.admin.reload") || sender.hasPermission("slashhub.reload") || !sender.hasPermission("slashhub.admin.*")) && sender instanceof ProxiedPlayer) {
+                if ((!sender.hasPermission("slashhub.admin.reload") || !sender.hasPermission("slashhub.reload") || !sender.hasPermission("slashhub.admin.*")) && sender instanceof ProxiedPlayer) {
                     player.sendMessage(messageFormatter.Format(adventure, mm, config.getString("Messages.NoPermission")));
                     return;
                 }
@@ -142,5 +148,15 @@ public class SlashHubCommand extends Command {
         return list.stream()
                 .map(String::toLowerCase) // Convert each element to lowercase
                 .anyMatch(element -> element.equals(finalValue)); // Check for equality
+    }
+
+    @Override
+    public Iterable<String> onTabComplete(CommandSender sender, String[] args) {
+        Set<String> argsList = new HashSet<>();
+        if (args.length == 1) {
+            argsList.clear();
+            argsList.add("reload");
+        }
+        return argsList;
     }
 }
